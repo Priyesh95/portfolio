@@ -37,7 +37,7 @@ class App extends Component{
                 <div className = "bio">
                 <img style = {{margin:20}} src = {profile2} alt= "Loading" className = "profile"></img>
                 <h1>
-                    Hello!
+                    Hello!!
                 </h1>
                 <p>
                     My Name is Priyesh Nagar. I'm a Software Engineer.
