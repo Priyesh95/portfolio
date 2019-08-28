@@ -258,7 +258,7 @@ class App extends Component{
 
 
       <div className = "w3-container w3-card w3-white">
-        <h2 className = "w3-text-grey w3-padding-16"><i className = "fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <h2 className = "w3-text-grey w3-padding-16"><i className = "fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
         <div className = "w3-container">
           <h5 className = "w3-opacity"><b>SGSITS Indore</b></h5>
           <h6 className = "w3-text-teal"><i className = "fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2017</h6>
