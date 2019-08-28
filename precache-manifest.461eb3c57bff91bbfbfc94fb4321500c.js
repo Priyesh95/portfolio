@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "79e2e25b9fecbc9b08986ba6b43265d6",
+    "revision": "a66d9d761890cfd4d2fd3cbc8039258a",
     "url": "/portfolio/index.html"
   },
   {
-    "revision": "623fb5e0a8c30bfac8b5",
-    "url": "/portfolio/static/css/main.e5b2dc51.chunk.css"
+    "revision": "c564ad9758d04aa3f84a",
+    "url": "/portfolio/static/css/main.014ee04b.chunk.css"
   },
   {
-    "revision": "decf1ce3948d7d4aff0f",
-    "url": "/portfolio/static/js/2.8d248648.chunk.js"
+    "revision": "962c1fbdd7780be90cf2",
+    "url": "/portfolio/static/js/2.09a482eb.chunk.js"
   },
   {
-    "revision": "623fb5e0a8c30bfac8b5",
-    "url": "/portfolio/static/js/main.36a26783.chunk.js"
+    "revision": "c564ad9758d04aa3f84a",
+    "url": "/portfolio/static/js/main.11603882.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
     "url": "/portfolio/static/js/runtime~main.f308c8e6.js"
+  },
+  {
+    "revision": "4d16927e50249155cb23c45f37cb27a7",
+    "url": "/portfolio/static/media/e-tailing.4d16927e.jpg"
   },
   {
     "revision": "fd99f8e3744a0cf1335282d72cb77f5f",
@@ -50,5 +54,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "cf4449c1884598b292630aa9f4007c19",
     "url": "/portfolio/static/media/roboto-condensed.light.cf4449c1.ttf"
+  },
+  {
+    "revision": "2cba101c320ee38f26181a80c0bcb216",
+    "url": "/portfolio/static/media/sec-games.2cba101c.jpg"
   }
 ]);
