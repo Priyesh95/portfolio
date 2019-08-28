@@ -274,8 +274,8 @@ class App extends Component{
     </div>
     <footer className = "w3-container w3-teal w3-center w3-margin-top" >
   <p>Find me on social media.</p>
-  <i className = "fa fa-github w3-hover-opacity"></i>
-  <i style = {{marginLeft:'5px'}} className = "fa fa-linkedin w3-hover-opacity"></i>
+  <i href = "https://github.com/Priyesh95" className = "fa fa-github w3-hover-opacity"></i>
+  <i href = "https://linkedin.com/in/priyesh-nagar-63a52011a/" style = {{marginLeft:'5px'}} className = "fa fa-linkedin w3-hover-opacity"></i>
   
 </footer>
     </div>  
