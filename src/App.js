@@ -238,11 +238,11 @@ class App extends Component{
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
         <img src = {angularjs} alt= "Loading" className = "projects" ></img>
-        <a href = "https://client-panel-prod-e3422.firebaseapp.com/login">Sell Products</a>
+        <a href = "https://sell-products-pn.herokuapp.com/">Sell Products</a>
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
         <img src = {react} alt= "Loading" className = "projects" ></img>
-        <a href = "https://client-panel-prod-e3422.firebaseapp.com/login">Weather App</a>
+        <a href = "https://weather-app-pn.herokuapp.com/">Weather App</a>
         <p></p>
         </div>
         </div>
