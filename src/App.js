@@ -3,6 +3,7 @@ import Projects from './Project';
 import SocialProfiles from './SocialProfile'
 import profile2 from './assets/profile2.jpg';
 import solar from './assets/solar-dashboard.jpg';
+import appt_bkng from './assets/Appoinment-Booking-System.png';
 import industry from './assets/industry.jpg';
 import facial_recognition from './assets/facial-recognition.jpg';
 import sec_games from './assets/sec-games.jpg';
@@ -151,15 +152,28 @@ class App extends Component{
 
         <h2 className = "w3-text-grey w3-padding-16"><i className = "fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
         <div className = "w3-container">
+          <h5 className = "w3-opacity"><b>Software Engineer | Servicenow</b></h5>
+          <h6 className = "w3-text-teal"><i className = "fa fa-calendar fa-fw w3-margin-right"></i>Feb 2020 - <span className = "w3-tag w3-teal w3-round">Current</span></h6>
+        
+        
+          <div className = 'w3-third'>
+          <img src = {appt_bkng} alt= "Loading" className = "projects" style = {{marginTop:27}}></img>
+          </div>
+          <div className = 'w3-twothird'>
+            <p>Currently working on contractor management and appointment booking features of field service management product of the company. Contractor management helps customers to manage work requests that are performed on location by field service agents. Appointment booking feature lets customers create time windows for offered services. Customers and employees can use these windows to book service appointments. Recently appointment booking feature was used by multiple countries to allow residents to book appointment for COVID vaccines.</p>
+          </div>
+        </div>
+        <hr></hr>
+        <div className = "w3-container">
           <h5 className = "w3-opacity"><b>Associate Solution Advisor | Deloitte</b></h5>
-        <h6 className = "w3-text-teal"><i className = "fa fa-calendar fa-fw w3-margin-right"></i>July 2017 - <span className = "w3-tag w3-teal w3-round">Current</span></h6>
+        <h6 className = "w3-text-teal"><i className = "fa fa-calendar fa-fw w3-margin-right"></i>July 2017 - Feb 2020</h6>
         
         
         <div className = 'w3-third'>
         <img src = {solar} alt= "Loading" className = "projects" style = {{marginTop:27}}></img>
         </div>
         <div className = 'w3-twothird'>
-          <p>Currently developing web application for real time solar plants data. The application is based on real time data drawn using IOT devices embedded on the plants. The application visually displays real time health of all the invertors of a site and alerts the users in case of emergency. The application is developed using Python Flask, Angular JS, Highcharts and Postgresql.</p>
+          <p>Developed web application for real time solar plants data. The application is based on real time data drawn using IOT devices embedded on the plants. The application visually displays real time health of all the invertors of a site and alerts the users in case of emergency. The application is developed using Python Flask, Angular JS, Highcharts and Postgresql.</p>
           </div>
           
         
@@ -178,7 +192,7 @@ class App extends Component{
         </div>  
           
           <div className = 'w3-third'>
-        <img src = {sec_games} alt= "Loading" className = "projects" style = {{marginTop:27}}></img>
+        <img src = {sec_games} alt= "Loading" className = "projects" style = {{height: 120}}></img>
         </div>
         <div className = 'w3-twothird'>
           <p>Recently worked on SEC games analysis project which was developed using Python, Flask and SQL server for loading data for analysis. The project required to visually showcase the analysis using charts (chart.js) where the charts should be made to show the behavior of referees towards the home teams.</p>
