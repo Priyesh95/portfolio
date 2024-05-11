@@ -143,7 +143,7 @@ class App extends Component{
       <div className = "w3-container w3-card w3-white w3-margin-bottom">
       <h2 className = "w3-text-grey w3-padding-16"><i className = "fa fa-list-alt fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Summary</h2>
         <div className = "w3-container">
-            <p>Currently I am a software engineer at servicenow. I have experience from Deloitte Advisory with the Analytics practice specializing in Software development. I have experience of 4.5 years in developing web applications using Angular, Angular JS 1.x, Angular 5 & 6 and Flask.I am well versed in Codeigniter PHP, HTML, Javascript, SQL server, POSTGRESQL R and Python. I also had exposure to Mongo DB and have basic understanding of Data Structures and Algorithms.</p>
+            <p>Currently I am a senior software engineer at servicenow. I have experience from Deloitte Advisory with the Analytics practice specializing in Software development. I have experience of 4.5 years in developing web applications using Angular, Angular JS 1.x, Angular 5 & 6 and Flask.I am well versed in Codeigniter PHP, HTML, Javascript, SQL server, POSTGRESQL R and Python. I also had exposure to Mongo DB and have basic understanding of Data Structures and Algorithms.</p>
           <hr></hr>
         </div>
       </div>
