@@ -251,8 +251,8 @@ class App extends Component{
         <a href = "https://client-panel-prod-e3422.firebaseapp.com/login">Client Panel</a>
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
-        <img src = {angularjs} alt= "Loading" className = "projects" ></img>
-        <a href = "https://sell-products-pn.herokuapp.com/">Sell Products</a>
+        <img src = {flask} alt= "Loading" className = "projects" ></img>
+        <a href = "https://priyesh95.pythonanywhere.com/">Bill expense</a>
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
         <img src = {react} alt= "Loading" className = "projects" ></img>
