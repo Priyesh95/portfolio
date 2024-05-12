@@ -1,26 +1,25 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.30f7101d.chunk.css",
-    "main.js": "/portfolio/static/js/main.53bdb2e3.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.53bdb2e3.chunk.js.map",
-    "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
-    "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
-    "static/js/2.42048f21.chunk.js": "/portfolio/static/js/2.42048f21.chunk.js",
-    "static/js/2.42048f21.chunk.js.map": "/portfolio/static/js/2.42048f21.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.826580da.css",
+    "main.js": "/portfolio/static/js/main.2b62836f.js",
+    "static/media/project1.png": "/portfolio/static/media/project1.2054760085113f8017be.png",
+    "static/media/project3.png": "/portfolio/static/media/project3.9e7f91c313a1655ac43e.png",
+    "static/media/flask.png": "/portfolio/static/media/flask.67bfd45695cb468b194e.png",
+    "static/media/project2.png": "/portfolio/static/media/project2.295c05993887c44e824b.png",
+    "static/media/Appoinment-Booking-System.png": "/portfolio/static/media/Appoinment-Booking-System.c434b824d10e5c17a42f.png",
+    "static/media/roboto-condensed.light.ttf": "/portfolio/static/media/roboto-condensed.light.d9e440de777389435df7.ttf",
+    "static/media/profile2.jpg": "/portfolio/static/media/profile2.ee741aa3d155c020f449.jpg",
+    "static/media/github_icon.png": "/portfolio/static/media/github_icon.ccc9e19951ebe8134688.png",
+    "static/media/linkedin_icon.png": "/portfolio/static/media/linkedin_icon.27cd6ff778a81a45fa46.png",
+    "static/media/sec-games.jpg": "/portfolio/static/media/sec-games.b8e7534748f8eb717439.jpg",
+    "static/media/email_icon.png": "/portfolio/static/media/email_icon.160a6010e180da253390.png",
+    "static/media/e-tailing.jpg": "/portfolio/static/media/e-tailing.b29f130bd5daa0d6b4df.jpg",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.ca234ec5bb14a5ba78fe7fe61b27438e.js": "/portfolio/precache-manifest.ca234ec5bb14a5ba78fe7fe61b27438e.js",
-    "service-worker.js": "/portfolio/service-worker.js",
-    "static/css/main.30f7101d.chunk.css.map": "/portfolio/static/css/main.30f7101d.chunk.css.map",
-    "static/media/Appoinment-Booking-System.png": "/portfolio/static/media/Appoinment-Booking-System.d3eabb76.png",
-    "static/media/e-tailing.jpg": "/portfolio/static/media/e-tailing.4d16927e.jpg",
-    "static/media/email_icon.png": "/portfolio/static/media/email_icon.fd99f8e3.png",
-    "static/media/github_icon.png": "/portfolio/static/media/github_icon.e2a62886.png",
-    "static/media/linkedin_icon.png": "/portfolio/static/media/linkedin_icon.56ab00e8.png",
-    "static/media/profile2.jpg": "/portfolio/static/media/profile2.9a577249.jpg",
-    "static/media/project1.png": "/portfolio/static/media/project1.bf56edc6.png",
-    "static/media/project2.png": "/portfolio/static/media/project2.f7e79c7d.png",
-    "static/media/project3.png": "/portfolio/static/media/project3.7bded960.png",
-    "static/media/index.css": "/portfolio/static/media/roboto-condensed.light.cf4449c1.ttf",
-    "static/media/sec-games.jpg": "/portfolio/static/media/sec-games.2cba101c.jpg"
-  }
+    "main.826580da.css.map": "/portfolio/static/css/main.826580da.css.map",
+    "main.2b62836f.js.map": "/portfolio/static/js/main.2b62836f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.826580da.css",
+    "static/js/main.2b62836f.js"
+  ]
 }
