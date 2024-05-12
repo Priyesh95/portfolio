@@ -12,6 +12,7 @@ import digital_card from './assets/digital-card.jpg';
 import e_tailing from './assets/e-tailing.jpg';
 import angular from './assets/angular.png';
 import angularjs from './assets/angularjs.jpg';
+import flask from './assets/flask.png';
 import react from './assets/react.png';
 
 class App extends Component{
