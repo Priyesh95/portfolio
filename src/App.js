@@ -13,7 +13,7 @@ import e_tailing from './assets/e-tailing.jpg';
 import angular from './assets/angular.png';
 import angularjs from './assets/angularjs.jpg';
 import flask from './assets/flask.png';
-import react from './assets/react.png';
+import dictionary from './assets/dictionary.jpg';
 
 class App extends Component{
 
@@ -153,7 +153,7 @@ class App extends Component{
 
         <h2 className = "w3-text-grey w3-padding-16"><i className = "fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
         <div className = "w3-container">
-          <h5 className = "w3-opacity"><b>Software Engineer | Servicenow</b></h5>
+          <h5 className = "w3-opacity"><b>Senior Software Engineer | Servicenow</b></h5>
           <h6 className = "w3-text-teal"><i className = "fa fa-calendar fa-fw w3-margin-right"></i>Feb 2020 - <span className = "w3-tag w3-teal w3-round">Current</span></h6>
         
         
@@ -161,7 +161,7 @@ class App extends Component{
           <img src = {appt_bkng} alt= "Loading" className = "projects" style = {{marginTop:27}}></img>
           </div>
           <div className = 'w3-twothird'>
-            <p>Currently working on contractor management and appointment booking features of field service management product of the company. Contractor management helps customers to manage work requests that are performed on location by field service agents. Appointment booking feature lets customers create time windows for offered services. Customers and employees can use these windows to book service appointments. Recently appointment booking feature was used by multiple countries to allow residents to book appointment for COVID vaccines.</p>
+            <p>Currently working on field service marketplace, appointment booking and Scheduled work management features of field service management product of the company. Field service marketplace connects customers with contractors, enabling outsourcing through a bidding process. Customers post tasks with budget and timeline, contractors bid with proposals. Scheduled work management application allows to configure planned activities, which are scheduled to be executed periodically based on time intervals or usage or occurrence of certain conditions. Appointment booking feature lets customers create time windows for offered services. Customers and employees can use these windows to book service appointments. Recently appointment booking feature was used by multiple countries to allow residents to book appointment for COVID vaccines.</p>
           </div>
         </div>
         <hr></hr>
@@ -248,17 +248,16 @@ class App extends Component{
         <h5 className = "w3-opacity"><b>Demo Projects</b></h5>
         <div className="w3-row">
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
-        <img src = {angular} alt= "Loading" className = "projects" ></img>
-        <a href = "https://client-panel-prod-e3422.firebaseapp.com/login">Client Panel</a>
+        <img src = {dictionary} alt= "Loading" className = "projects" ></img>
+        <a href = "https://priyesh08.pythonanywhere.com/">Instant Dictionary</a>
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
         <img src = {flask} alt= "Loading" className = "projects" ></img>
         <a href = "https://priyesh95.pythonanywhere.com/">Bill expense</a>
         </div>
         <div className="w3-third w3-container" style = {{textAlign : "center"}}>
-        <img src = {react} alt= "Loading" className = "projects" ></img>
-        <a href = "https://weather-app-pn.herokuapp.com/">Weather App</a>
-        <p></p>
+        <img src = {angular} alt= "Loading" className = "projects" ></img>
+        <a href = "https://client-panel-prod-e3422.firebaseapp.com/login">Client Panel</a>
         </div>
         </div>
         </div>
