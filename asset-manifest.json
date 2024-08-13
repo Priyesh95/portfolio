@@ -1,25 +1,13 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.826580da.css",
-    "main.js": "/portfolio/static/js/main.e91db031.js",
-    "static/media/project1.png": "/portfolio/static/media/project1.2054760085113f8017be.png",
-    "static/media/project3.png": "/portfolio/static/media/project3.9e7f91c313a1655ac43e.png",
-    "static/media/flask.png": "/portfolio/static/media/flask.67bfd45695cb468b194e.png",
-    "static/media/project2.png": "/portfolio/static/media/project2.295c05993887c44e824b.png",
-    "static/media/Appoinment-Booking-System.png": "/portfolio/static/media/Appoinment-Booking-System.c434b824d10e5c17a42f.png",
-    "static/media/roboto-condensed.light.ttf": "/portfolio/static/media/roboto-condensed.light.d9e440de777389435df7.ttf",
-    "static/media/profile2.jpg": "/portfolio/static/media/profile2.ee741aa3d155c020f449.jpg",
-    "static/media/github_icon.png": "/portfolio/static/media/github_icon.ccc9e19951ebe8134688.png",
-    "static/media/linkedin_icon.png": "/portfolio/static/media/linkedin_icon.27cd6ff778a81a45fa46.png",
-    "static/media/sec-games.jpg": "/portfolio/static/media/sec-games.b8e7534748f8eb717439.jpg",
-    "static/media/email_icon.png": "/portfolio/static/media/email_icon.160a6010e180da253390.png",
-    "static/media/e-tailing.jpg": "/portfolio/static/media/e-tailing.b29f130bd5daa0d6b4df.jpg",
+    "main.css": "/portfolio/static/css/main.fb3d7f50.css",
+    "main.js": "/portfolio/static/js/main.8c0c449e.js",
     "index.html": "/portfolio/index.html",
-    "main.826580da.css.map": "/portfolio/static/css/main.826580da.css.map",
-    "main.e91db031.js.map": "/portfolio/static/js/main.e91db031.js.map"
+    "main.fb3d7f50.css.map": "/portfolio/static/css/main.fb3d7f50.css.map",
+    "main.8c0c449e.js.map": "/portfolio/static/js/main.8c0c449e.js.map"
   },
   "entrypoints": [
-    "static/css/main.826580da.css",
-    "static/js/main.e91db031.js"
+    "static/css/main.fb3d7f50.css",
+    "static/js/main.8c0c449e.js"
   ]
 }
