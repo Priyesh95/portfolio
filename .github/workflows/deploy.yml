@@ -21,15 +21,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: |
-          npm install -g npm@10
-          npm install --no-audit --no-fund --omit=optional
+        run: yarn install
 
       - name: Build
-        run: npm run build
+        run: yarn build
         env:
           # CRA needs this on modern Node; set here so it works regardless of OS
           NODE_OPTIONS: --openssl-legacy-provider
