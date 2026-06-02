@@ -4,21 +4,93 @@ import gmail from './assets/gmail.png'
 import github from './assets/github.png'
 import FadeIn from './Fadein';
 
+// Icon CDN bases (devicon + simpleicons), same sources the reference site uses
+const DI = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
+const SI = 'https://cdn.simpleicons.org/';
+
+// A skill pill with an optional tech logo; hides the icon gracefully if it fails to load
+const SkillPill = ({ name, icon }) => (
+    <span className="skill-pill">
+        {icon && <img src={icon} alt="" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; }} />}
+        {name}
+    </span>
+);
+
+// Lucide-style line icons (stroke currentColor) used on project links
+const LinkIcon = ({ type }) => type === 'github' ? (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+        <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+) : (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M15 3h6v6" />
+        <path d="M10 14 21 3" />
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+);
+
+const ProjectLink = ({ href, label, icon }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="project-link">
+        <LinkIcon type={icon} /> {label}
+    </a>
+);
+
+const MailIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+);
+
+const PinIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0" />
+        <circle cx="12" cy="10" r="3" />
+    </svg>
+);
+
+const NAV_ITEMS = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'education', label: 'Education' },
+    { id: 'contact', label: 'Contact' },
+];
+
 const App = () => {
-        
+        const [active, setActive] = React.useState('home');
+
+        React.useEffect(() => {
+            const sections = NAV_ITEMS
+                .map((item) => document.getElementById(item.id))
+                .filter(Boolean);
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) setActive(entry.target.id);
+                    });
+                },
+                { rootMargin: '-45% 0px -50% 0px' }
+            );
+            sections.forEach((section) => observer.observe(section));
+            return () => observer.disconnect();
+        }, []);
+
         return(
           <div>
+          <div className="star-field" aria-hidden="true"></div>
           <header className="header">
           <nav className="nav container">
               <div className="logo"><a href="#home">Priyesh Nagar</a></div>
               <ul className="nav-list">
-                  <li><a href="#home">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#projects">Projects</a></li>
-                  <li><a href="#experience">Experience</a></li>
-                  <li><a href="#education">Education</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  {NAV_ITEMS.map((item) => (
+                      <li key={item.id}>
+                          <a href={`#${item.id}`} className={active === item.id ? 'active' : ''}>{item.label}</a>
+                      </li>
+                  ))}
               </ul>
           </nav>
       </header>
@@ -26,44 +98,13 @@ const App = () => {
       <section id="home" className="section home">
           <div className="container">
               <div className="intro">
-                  <h1 className="intro-title">Hi, I'm <span>Priyesh Nagar</span></h1>
-                  <p className="intro-subtitle">A Professional Software Engineer</p>
-                  <a href="#contact" className="btn">Let's Connect</a>
-                  <div className="social-icons">
-                      <a href="https://www.linkedin.com/in/priyesh-nagar/" target="_blank" className="social-icon">
-                          <img src={linkedin} alt="LinkedIn" />
-                      </a>
-                      <a href="https://github.com/Priyesh95" target="_blank" className="social-icon">
-                          <img src={github} alt="GitHub" />
-                      </a>
-                      <a href="mailto:priyesh.nagar1995@gmail.com" target="_blank" className="social-icon">
-                          <img src={gmail} alt="Gmail" />
-                      </a>
-                  </div>
+                  <span className="intro-greeting">Hi, I'm</span>
+                  <h1 className="intro-title"><span>Priyesh Nagar</span></h1>
+                  <span className="intro-badge">Senior Software Engineer · AI &amp; Automation</span>
+                  <p className="intro-tagline">I design and ship production systems and AI agents that deliver <span className="accent-serif">real impact</span></p>
+                  <a href="#contact" className="btn">Let's Connect →</a>
               </div>
-              <div className="background-animation">
-                  <div className="pulsating-dot" style={{top: '10%', left: '5%'}}></div>
-                  <div className="pulsating-dot" style={{top: '15%', left: '20%'}}></div>
-                  <div className="pulsating-dot" style={{top: '20%', left: '35%'}}></div>
-                  <div className="pulsating-dot" style={{top: '25%', left: '50%'}}></div>
-                  <div className="pulsating-dot" style={{top: '30%', left: '65%'}}></div>
-                  <div className="pulsating-dot" style={{top: '35%', left: '80%'}}></div>
-                  <div className="pulsating-dot" style={{top: '45%', left: '10%'}}></div>
-                  <div className="pulsating-dot" style={{top: '50%', left: '25%'}}></div>
-                  <div className="pulsating-dot" style={{top: '55%', left: '40%'}}></div>
-                  <div className="pulsating-dot" style={{top: '60%', left: '55%'}}></div>
-                  <div className="pulsating-dot" style={{top: '65%', left: '70%'}}></div>
-                  <div className="pulsating-dot" style={{top: '70%', left: '85%'}}></div>
-                  <div className="pulsating-dot" style={{top: '75%', left: '15%'}}></div>
-                  <div className="pulsating-dot" style={{top: '80%', left: '30%'}}></div>
-                  <div className="pulsating-dot" style={{top: '85%', left: '45%'}}></div>
-                  <div className="pulsating-dot" style={{top: '90%', left: '60%'}}></div>
-                  <div className="pulsating-dot" style={{top: '10%', left: '75%'}}></div>
-                  <div className="pulsating-dot" style={{top: '20%', left: '90%'}}></div>
-                  <div className="pulsating-dot" style={{top: '30%', left: '10%'}}></div>
-                  <div className="pulsating-dot" style={{top: '20%', left: '25%'}}></div>
-                  <div className="pulsating-dot" style={{top: '10%', left: '40%'}}></div>   
-              </div>    
+              <a href="#about" className="scroll-cue" aria-label="Scroll down">↓</a>
           </div>
       </section>
       
@@ -72,7 +113,8 @@ const App = () => {
       <FadeIn>
           <div className="container">
               <h2>About Me</h2>
-              <p>With 7 years of experience in developing web applications, I have honed my skills in a diverse tech stack. My expertise includes Angular, AngularJS 1.x, and Flask, complemented by proficiency in HTML, JavaScript, SQL Server, Python, and Docker. Additionally, I am skilled in Redis, React, Ionic, and Electron. I have substantial experience with MongoDB and a solid understanding of data structures and algorithms. I am seeking to leverage my technical abilities and experience to contribute to a progressive organization and help achieve its mission and goals.</p>
+              <p className="section-sub">Get to know me better</p>
+              <p>I'm a Senior Software Engineer with 9+ years of experience building production software at scale, currently focused on the intersection of AI and enterprise automation. At ServiceNow, I design and ship systems that power Planned Work Management and Appointment Booking for 200+ enterprise customers — and I build AI agents that turn natural language into real workflows using RAG, semantic search, and the Model Context Protocol (MCP). Outside of work, I ship full-stack AI products end to end, from serverless backends to generative image pipelines. I love taking an idea from system design all the way through to a deployed, dependable product.</p>
           </div>
       </FadeIn>
       </section>
@@ -81,19 +123,72 @@ const App = () => {
       <section id="skills" className="section skills">
       <FadeIn>
           <div className="container">
-              <h2>Skills</h2>
-              <div className="skills-grid">
-                  <div className="skill-item">
-                      <h3>Frontend Development</h3>
-                      <p>Expert in creating responsive and interactive user interfaces using HTML, Javascript, Angular, Angular JS, React, Flask, Ionic and Electron.</p>
+              <h2>Skills &amp; Expertise</h2>
+              <p className="section-sub">Technologies I work with, from languages to frameworks and tools</p>
+              <div className="skills-groups">
+                  <div className="skill-group">
+                      <h3>Languages</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="JavaScript" icon={`${DI}javascript/javascript-original.svg`} />
+                          <SkillPill name="TypeScript" icon={`${DI}typescript/typescript-original.svg`} />
+                          <SkillPill name="Python" icon={`${DI}python/python-original.svg`} />
+                          <SkillPill name="Java" icon={`${DI}java/java-original.svg`} />
+                      </div>
                   </div>
-                  <div className="skill-item">
-                      <h3>Backend Development</h3>
-                      <p>Python, Java, Node.js, Express, MongoDb, Redis, SQL server, MySQL and RESTful APIs.</p>
+                  <div className="skill-group">
+                      <h3>Frameworks &amp; Libraries</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="React" icon={`${DI}react/react-original.svg`} />
+                          <SkillPill name="Angular" icon={`${DI}angularjs/angularjs-original.svg`} />
+                          <SkillPill name="Node.js" icon={`${DI}nodejs/nodejs-original.svg`} />
+                          <SkillPill name="Express" icon={`${SI}express/white`} />
+                          <SkillPill name="Flask" icon={`${SI}flask/white`} />
+                      </div>
                   </div>
-                  <div className="skill-item">
-                      <h3>DevOps & Tools</h3>
-                      <p>Proficient in using Git, Docker, AWS and CI/CD pipelines for efficient development workflows.</p>
+                  <div className="skill-group">
+                      <h3>AI &amp; Machine Learning</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="RAG Architecture" />
+                          <SkillPill name="Claude API" icon={`${SI}anthropic/white`} />
+                          <SkillPill name="OpenAI" />
+                          <SkillPill name="Pinecone" />
+                          <SkillPill name="Model Context Protocol" />
+                          <SkillPill name="Semantic Search" />
+                          <SkillPill name="Prompt Engineering" />
+                          <SkillPill name="Embeddings" />
+                      </div>
+                  </div>
+                  <div className="skill-group">
+                      <h3>Databases</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="MongoDB" icon={`${DI}mongodb/mongodb-original.svg`} />
+                          <SkillPill name="PostgreSQL" icon={`${DI}postgresql/postgresql-original.svg`} />
+                          <SkillPill name="MySQL" icon={`${DI}mysql/mysql-original.svg`} />
+                          <SkillPill name="SQL Server" icon={`${DI}microsoftsqlserver/microsoftsqlserver-plain.svg`} />
+                          <SkillPill name="Redis" icon={`${DI}redis/redis-original.svg`} />
+                          <SkillPill name="IndexedDB" />
+                      </div>
+                  </div>
+                  <div className="skill-group">
+                      <h3>Cloud &amp; DevOps</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="AWS" icon={`${DI}amazonwebservices/amazonwebservices-plain-wordmark.svg`} />
+                          <SkillPill name="Cloudflare Workers" icon={`${DI}cloudflare/cloudflare-original.svg`} />
+                          <SkillPill name="Docker" icon={`${DI}docker/docker-original.svg`} />
+                          <SkillPill name="Jenkins" icon={`${DI}jenkins/jenkins-original.svg`} />
+                          <SkillPill name="CI/CD" />
+                      </div>
+                  </div>
+                  <div className="skill-group">
+                      <h3>Tools &amp; Platforms</h3>
+                      <div className="skill-pills">
+                          <SkillPill name="Git" icon={`${DI}git/git-original.svg`} />
+                          <SkillPill name="Kafka" icon={`${SI}apachekafka/white`} />
+                          <SkillPill name="REST APIs" />
+                          <SkillPill name="ServiceNow" />
+                          <SkillPill name="PDF.js" />
+                          <SkillPill name="Segmind" />
+                      </div>
                   </div>
               </div>
           </div>
@@ -103,31 +198,53 @@ const App = () => {
       <section id="projects" className="section projects">
       <FadeIn>
           <div className="container">
-              <h2>Projects</h2>
+              <h2>AI Projects &amp; Products</h2>
+              <p className="section-sub">A selection of products I've designed and shipped</p>
               <div className="projects-grid">
                   <div className="project-item">
-                      <h3>Tech articles application</h3>
-                      <p>This web application allows users to register, log in, and interact with technology-related articles. Users can view and like articles. The dashboard displays charts showing the most viewed and most liked articles.(MERN and Redis) <a href="https://github.com/Priyesh95/tech-articles-frontend" className="project-link">View Project</a></p>
+                      <h3>Snorpix <span className="project-badge live">Live</span></h3>
+                      <div className="tech-tags"><span>React</span><span>Cloudflare Workers</span><span>Supabase</span><span>Segmind</span><span>FLUX Models</span></div>
+                      <p>A personalized children's storybook platform where kids become the hero through AI face-swapping. I built the full order-to-delivery workflow on a serverless stack — from customer upload through face detection, FLUX/Stable Diffusion image generation, 16-page style-consistent compilation, and print-fulfillment integration for on-demand hardcover books.</p>
+                      <div className="project-links">
+                          <ProjectLink href="https://www.snorpix.com" label="Live Demo" icon="external" />
+                      </div>
+                  </div>
+                  <div className="project-item">
+                      <h3>StockSage <span className="project-badge dev">In Development</span></h3>
+                      <div className="tech-tags"><span>React</span><span>Cloudflare Workers</span><span>Pinecone</span><span>Claude API</span><span>Yahoo Finance API</span></div>
+                      <p>A RAG-based stock analysis assistant that blends real-time market data with semantic search across financial news, SEC filings and analyst reports. A Pinecone vector store powers retrieval while Claude generates context-aware insights — price metrics, sentiment and risk-adjusted recommendations across Indian and US markets.</p>
+                  </div>
+                  <div className="project-item">
+                      <h3>PrepWise <span className="project-badge live">Live</span></h3>
+                      <div className="tech-tags"><span>React</span><span>Claude API</span><span>PDF.js</span><span>IndexedDB</span></div>
+                      <p>An AI-powered study quiz generator that turns documents into interactive quizzes with instant feedback. Fully client-side (PDF upload → text extraction → Claude API → IndexedDB) so data never leaves the browser, with resume support and weak-topic identification.</p>
+                      <div className="project-links">
+                          <ProjectLink href="https://prepwisepn.netlify.app" label="Live Demo" icon="external" />
+                      </div>
+                  </div>
+                  <div className="project-item">
+                      <h3>CareerCanvas <span className="project-badge live">Live</span></h3>
+                      <div className="tech-tags"><span>React</span><span>Claude API</span><span>Template Engine</span><span>Netlify</span></div>
+                      <p>An AI resume-to-portfolio converter that generates a styled, responsive portfolio site from a resume upload — using a prompt-engineering pipeline to extract structured data and produce themed HTML/CSS output.</p>
+                      <div className="project-links">
+                          <ProjectLink href="https://career-canvas-pn.netlify.app" label="Live Demo" icon="external" />
+                      </div>
+                  </div>
+                  <div className="project-item">
+                      <h3>Tech Articles Application</h3>
+                      <div className="tech-tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>Redis</span></div>
+                      <p>A platform where users register, log in and interact with technology articles, viewing and liking content. The dashboard surfaces charts of the most viewed and most liked articles.</p>
+                      <div className="project-links">
+                          <ProjectLink href="https://github.com/Priyesh95/tech-articles-frontend" label="Code" icon="github" />
+                      </div>
                   </div>
                   <div className="project-item">
                       <h3>TravelSnap</h3>
-                      <p>TA web application that allows users to upload pictures of their vacation and view photos shared by other users. This app is built using the MERN stack (MongoDB, Express, React, Node.js). <a href="https://github.com/Priyesh95/travelSnapFrontend" className="project-link">View Project</a></p>
-                  </div>
-                  <div className="project-item">
-                      <h3>Alien Shooter game</h3>
-                      <p>A 2-d alien shooter game build using python. <a href="https://github.com/Priyesh95/alien-shooter" className="project-link">View Project</a></p>
-                  </div>
-                  <div className="project-item">
-                      <h3>Online dictionary</h3>
-                      <p>A web app which gives meaning of every word similar to a dictionary.This is built using python Flask. <a href="http://priyesh08.pythonanywhere.com/" className="project-link">View Project</a></p>
-                  </div>
-                  <div className="project-item">
-                      <h3>BillBuddy</h3>
-                      <p>Flatmate's bill sharing solution with transparent splitting. Built using python Flask <a href="https://priyesh95.pythonanywhere.com/" className="project-link">View Project</a></p>
-                  </div>
-                  <div className="project-item">
-                      <h3>Digital Visiting Cards</h3>
-                      <p> A Web app storing data on AWS RDS through APIs using CodeIgniter. Provides sales lead management through collected visiting cards.</p>
+                      <div className="tech-tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span></div>
+                      <p>A web app where users upload pictures of their vacations and browse photos shared by others, built on the MERN stack.</p>
+                      <div className="project-links">
+                          <ProjectLink href="https://github.com/Priyesh95/travelSnapFrontend" label="Code" icon="github" />
+                      </div>
                   </div>
               </div>
           </div>
@@ -138,37 +255,50 @@ const App = () => {
       <FadeIn>
           <div className="container">
               <h2>Experience</h2>
-              <div className="experience-grid">
-                  <div className="experience-item">
-                      <h3>Senior Software Engineer - Servicenow</h3>
-                      <p>February 2020 - Present</p>
-                      <ul className="project-list">
-                          <li>
-                              Currently working on scheduled management. It helps organizations to create and manage the planned work activities with recurring schedules at regular intervals.
-                          </li>
-                          <li>
-                              Previously worked on appointment booking feature which lets customers create time windows for offered services. Recently it was used by multiple countries to allow residents to book appointment for COVID vaccines.
-                          </li>
-                          <li>
-                              Successfully launched a contractor marketplace from scratch, which accepts a task as input and pushes it to a marketplace where different contractors can bid to complete it in the best interest of the requestor.
-                          </li>
-                      </ul>
+              <p className="section-sub">My professional journey</p>
+              <div className="timeline">
+                  <div className="timeline-line"></div>
+
+                  <div className="timeline-item">
+                      <div className="timeline-dot"></div>
+                      <div className="experience-item">
+                          <div className="exp-header">
+                              <h3>Senior Software Engineer</h3>
+                              <span className="exp-date">Feb 2020 - Present</span>
+                          </div>
+                          <p className="exp-company"><a href="https://www.servicenow.com" target="_blank" rel="noopener noreferrer">ServiceNow</a> <span className="exp-location">• Remote, India</span></p>
+                          <h4 className="experience-subhead">AI &amp; Automation Innovation <span className="experience-period">2024 - Present</span></h4>
+                          <ul className="project-list">
+                              <li>Built a production MCP agent for conversational workflow automation, letting users create PWM plans, schedules and work orders through natural language with any LLM via Model Context Protocol — cutting manual data entry time by 60%.</li>
+                              <li>Deployed First Pass Agent, an enterprise RAG system that auto-resolves incoming FSM issues via semantic search across a knowledge base of 500+ documented solutions, reducing manual case triage effort by 40%.</li>
+                              <li>Developed a self-improving Runbook Updater agent that fetches resolved case tasks, deduplicates via semantic similarity, and creates/updates knowledge base entries — keeping documentation current without manual intervention.</li>
+                              <li>Created a multi-agent test automation system where one agent analyzes code changes in defects/stories and another generates test cases from learned patterns, accelerating QA coverage for PWM and Appointment Booking.</li>
+                          </ul>
+                          <h4 className="experience-subhead">Core Product — PWM &amp; Appointment Booking <span className="experience-period">2020 - Present</span></h4>
+                          <ul className="project-list">
+                              <li>Designed and built the Planned Work Management (PWM) scheduling engine handling 500K+ recurring work orders monthly across 200+ enterprise customers, with automated schedule generation, timezone handling and work-order suppression logic.</li>
+                              <li>Led the Appointment Booking system deployed for national COVID-19 vaccine programs across multiple countries, processing millions of bookings with 99.9% uptime and sub-200ms API response times under peak load.</li>
+                              <li>Architected and launched a Contractor Management marketplace enabling competitive bidding on field-service tasks, with real-time notifications, bid evaluation workflows and contractor performance tracking.</li>
+                              <li>Shipped complex PWM features — meter-based work triggers, duration-based scheduling with forecasting, schedule occurrence management across timezones, CIM/PCM integration — and led accessibility work to WCAG 2.2 Level AA.</li>
+                          </ul>
+                          <div className="tech-tags"><span>MCP</span><span>RAG</span><span>React</span><span>Java</span><span>Semantic Search</span><span>ServiceNow Platform</span></div>
+                      </div>
                   </div>
-                  <div className="experience-item">
-                      <h3>Associate solution advisor - Deloitte</h3>
-                      <p>July 2017 - February 2020</p>
-                      <ul className="project-list">
-                          <li>
-                              Developed a Python Flask web application using IoT data for real-time solar plant monitoring, tracking inverter health, production and providing emergency alerts with AngularJS, Highcharts, and PostgreSQL.
-                          </li>
-                          <li>
-                              Developed a Python Flask-based face recognition tool to prevent KYC frauds by detecting if two images of a person match from any angle.
-                          </li>
-                          <li>
-                              Developed and owned Industry application which was developed on Angular 7, python Flask. Application    was developed to showcase industry capabilities of Deloitte across various industries clients and offerings.
-                          </li>
-                      </ul>
-                      
+
+                  <div className="timeline-item">
+                      <div className="timeline-dot"></div>
+                      <div className="experience-item">
+                          <div className="exp-header">
+                              <h3>Associate Solution Advisor</h3>
+                              <span className="exp-date">Jul 2017 - Feb 2020</span>
+                          </div>
+                          <p className="exp-company"><a href="https://www2.deloitte.com" target="_blank" rel="noopener noreferrer">Deloitte</a> <span className="exp-location">• Hyderabad, India</span></p>
+                          <ul className="project-list">
+                              <li>Developed an IoT-powered solar plant monitoring platform (Python Flask, AngularJS) with real-time health tracking for 50+ inverters, Highcharts production analytics and an SMS/email emergency alert system on a PostgreSQL backend serving 10+ installations.</li>
+                              <li>Built a face recognition fraud detection system for KYC verification (Python Flask, OpenCV) with a multi-angle face-matching algorithm achieving 95%+ accuracy to prevent identity fraud during customer onboarding.</li>
+                          </ul>
+                          <div className="tech-tags"><span>Python</span><span>Flask</span><span>AngularJS</span><span>OpenCV</span><span>PostgreSQL</span></div>
+                      </div>
                   </div>
               </div>
           </div>
@@ -179,10 +309,11 @@ const App = () => {
       <FadeIn>
           <div className="container">
               <h2>Education</h2>
+              <p className="section-sub">Where it started</p>
               <div className="education-grid">
                   <div className="education-item">
-                      <h3>Bachelor of Engineering in Information technology, GPA: 7.3/10</h3>
-                      <p>SGSITS Indore, Graduated 2017</p>
+                      <h3>Bachelor of Engineering in Information Technology</h3>
+                      <p>Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore · 2013 - 2017</p>
                   </div>
               </div>
           </div>
@@ -191,14 +322,23 @@ const App = () => {
   
       <section id="contact" className="section contact">
           <div className="container">
-              <h2>Contact</h2>
-              <p>I'm always open to discussing new projects or opportunities. Reach out to me at <a href="mailto:priyesh.nagar1995@gmail.com">priyesh.nagar1995@gmail.com</a>.</p>
+              <h2>Get in Touch</h2>
+              <p className="section-sub">Have a project in mind or just want to say hello?</p>
+              <div className="contact-info">
+                  <a href="mailto:priyesh.nagar1995@gmail.com" className="contact-line"><MailIcon /> priyesh.nagar1995@gmail.com</a>
+                  <span className="contact-line"><PinIcon /> Remote, India</span>
+              </div>
+              <div className="contact-socials">
+                  <a href="https://github.com/Priyesh95" target="_blank" rel="noopener noreferrer" className="contact-pill">GitHub</a>
+                  <a href="https://www.linkedin.com/in/priyesh-nagar/" target="_blank" rel="noopener noreferrer" className="contact-pill">LinkedIn</a>
+              </div>
+              <a href="mailto:priyesh.nagar1995@gmail.com" className="btn contact-btn"><MailIcon /> Send me an email</a>
           </div>
       </section>
   
       <footer className="footer">
           <div className="container">
-              <p>&copy; 2024 Priyesh Nagar. All rights reserved.</p>
+              <p>&copy; 2026 Priyesh Nagar. All rights reserved.</p>
           </div>
       </footer>
       </div>
